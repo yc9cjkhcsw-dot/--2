@@ -1,0 +1,323 @@
+/* ============ БАЗА И ПЕРЕМЕННЫЕ ============ */
+:root {
+    --bg-1: #0f172a;
+    --bg-2: #1e293b;
+    --surface: #ffffff;
+    --surface-2: #f8fafc;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --danger: #dc2626;
+    --danger-hover: #b91c1c;
+    --success: #059669;
+    --warning: #d97706;
+    --border: #e2e8f0;
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    --radius: 14px;
+    --transition: 0.2s ease;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============ ШАПКА ============ */
+.site-header {
+    padding: 40px 0 20px;
+    text-align: center;
+    color: #fff;
+}
+.logo {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+.subtitle {
+    margin: 8px 0 0;
+    color: #cbd5e1;
+    font-size: 1rem;
+}
+
+/* ============ КАРТОЧКИ ============ */
+.card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    margin-bottom: 24px;
+}
+.card h2 {
+    margin: 0 0 16px;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+.hint {
+    margin: 0 0 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ============ ФОРМА ============ */
+.field {
+    margin-bottom: 16px;
+}
+.field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+}
+.field input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface-2);
+    transition: border-color var(--transition), background var(--transition);
+    font-family: inherit;
+}
+.field input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #fff;
+}
+.field.has-error input {
+    border-color: var(--danger);
+    background: #fef2f2;
+}
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.field-row .field { margin-bottom: 0; }
+
+.error {
+    display: block;
+    min-height: 1.2em;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--danger);
+}
+
+/* ============ КНОПКИ ============ */
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    font-family: inherit;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+}
+.btn-primary:hover { background: var(--primary-hover); box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35); }
+
+.btn-secondary {
+    background: #e2e8f0;
+    color: var(--text);
+}
+.btn-secondary:hover { background: #cbd5e1; }
+
+.btn-danger {
+    background: var(--danger);
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+.btn-danger:hover { background: var(--danger-hover); }
+
+.actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* ============ РЕЗУЛЬТАТ ============ */
+.result {
+    margin-top: 24px;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 1px solid #a7f3d0;
+    animation: fadeIn 0.3s ease;
+}
+.result.error-state {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border-color: #fecaca;
+}
+.result h3 {
+    margin: 0 0 12px;
+    color: var(--success);
+    font-size: 1.1rem;
+}
+.result.error-state h3 { color: var(--danger); }
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+.result-item {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 12px;
+    border-radius: 8px;
+}
+.result-item .label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+.result-item .value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+}
+.result-item.highlight .value { color: var(--success); font-size: 1.4rem; }
+
+.hidden { display: none; }
+
+/* ============ ЖУРНАЛ ============ */
+.journal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+.journal-head h2 { margin: 0; }
+.journal-list { display: flex; flex-direction: column; gap: 12px; }
+.journal-list .empty {
+    color: var(--text-muted);
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+}
+
+.journal-entry {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    animation: fadeIn 0.3s ease;
+}
+.journal-entry .time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.journal-entry .time::before { content: "🕒"; }
+.journal-entry .data {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.6;
+}
+.journal-entry .data b { color: var(--text); }
+.journal-entry .total {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--success);
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+}
+
+/* ============ СТРАНИЦА 404 ============ */
+.error-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+.error-page {
+    text-align: center;
+    color: #fff;
+    padding: 40px 20px;
+    max-width: 560px;
+}
+.error-code {
+    font-size: clamp(6rem, 20vw, 12rem);
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+    letter-spacing: -0.05em;
+}
+.error-title {
+    font-size: 2rem;
+    margin: 0 0 12px;
+}
+.error-text {
+    color: #cbd5e1;
+    margin: 0 0 28px;
+    font-size: 1.05rem;
+}
+
+/* ============ ПОДВАЛ ============ */
+.site-footer {
+    padding: 24px 0 40px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+.site-footer a {
+    color: #cbd5e1;
+    text-decoration: none;
+}
+.site-footer a:hover { color: #fff; text-decoration: underline; }
+
+/* ============ АНИМАЦИИ ============ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ АДАПТИВ ============ */
+@media (max-width: 600px) {
+    .site-header { padding: 24px 0 12px; }
+    .logo { font-size: 1.5rem; }
+    .card { padding: 20px; }
+    .field-row { grid-template-columns: 1fr; }
+    .actions { flex-direction: column; }
+    .actions .btn { width: 100%; }
+    .result-grid { grid-template-columns: 1fr; }
+    .journal-head { flex-direction: column; align-items: stretch; }
+    .journal-head .btn { width: 100%; }
+}
