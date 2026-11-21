@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор зарплаты</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="logo">💰 Калькулятор зарплаты</h1>
+            <p class="subtitle">Точный расчёт заработка с учётом премии и НДФЛ</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card calculator">
+            <h2>Исходные данные</h2>
+            <p class="hint">Все поля обязательны. Допускаются только числа (в том числе дробные через точку).</p>
+
+            <form id="calcForm" novalidate>
+                <div class="field">
+                    <label for="salary">Оклад за месяц, ₽</label>
+                    <input type="text" id="salary" name="salary" placeholder="например, 80000" autocomplete="off">
+                    <span class="error" data-for="salary"></span>
+                </div>
+
+                <div class="field">
+                    <label for="worked">Отработано дней</label>
+                    <input type="text" id="worked" name="worked" placeholder="например, 18" autocomplete="off">
+                    <span class="error" data-for="worked"></span>
+                </div>
+
+                <div class="field">
+                    <label for="norm">Норма рабочих дней в месяце</label>
+                    <input type="text" id="norm" name="norm" placeholder="например, 22" autocomplete="off">
+                    <span class="error" data-for="norm"></span>
+                </div>
+
+                <div class="field">
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="bonus">Премия, ₽</label>
+                            <input type="text" id="bonus" name="bonus" placeholder="например, 10000" autocomplete="off">
+                            <span class="error" data-for="bonus"></span>
+                        </div>
+                        <div class="field">
+                            <label for="tax">Ставка НДФЛ, %</label>
+                            <input type="text" id="tax" name="tax" placeholder="например, 13" autocomplete="off">
+                            <span class="error" data-for="tax"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="submit" class="btn btn-primary">Рассчитать</button>
+                    <button type="reset" class="btn btn-secondary">Очистить поля</button>
+                </div>
+            </form>
+
+            <div id="result" class="result hidden"></div>
+        </section>
+
+        <section class="card journal">
+            <div class="journal-head">
+                <h2>📜 Журнал запросов</h2>
+                <button id="clearJournal" class="btn btn-danger" type="button">Очистить журнал</button>
+            </div>
+            <div id="journalList" class="journal-list">
+                <p class="empty">Журнал пока пуст. Сделайте первый расчёт.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2026 Калькулятор зарплаты · <a href="404.html">Тест 404</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
